@@ -557,6 +557,50 @@ Khi đóng gói riêng, cần thử chạy từ thư mục đã giải nén đ�
 - `zozo_Context_80items.csv`: file khoảng 269 MB; chỉ kèm nếu giảng viên yêu cầu nộp lại dữ liệu.
 - Các PDF đề bài và hướng dẫn gốc.
 
+
+**Có. Tôi đã chạy output thực tế và vừa kiểm tra lại độ khớp với đề. Kết quả hiện có đủ các phần (a)–(g), nhưng cần phân biệt “phép tính đã kiểm tra đúng” với “mọi kết luận đều chắc chắn”.**
+
+Trước đó, tôi đã chạy toàn bộ dữ liệu **hai lần**: 17 bảng CSV, 14 đoạn LaTeX và 7 hình PNG giống nhau từng byte. Lần kiểm tra này, tôi tiếp tục:
+
+- Chạy lại **10 kiểm tra tự động**: tất cả đạt.
+- Tính lại IPS, SNIPS, DR và ESS bằng phép tính riêng, không gọi hàm đánh giá ban đầu: **khớp Table 3**.
+- Kiểm tra tổng số dòng/click theo ngày và theo tập train–validation–test.
+- Kiểm tra mỗi slate có ba item khác nhau, xác suất hợp lệ và tổng exposure bằng 1.
+- Kiểm tra bảng/hình được dẫn trong báo cáo đều có file output tương ứng.
+
+**Đối chiếu từng yêu cầu của đề:**
+
+| Yêu cầu | Output hiện có | Đánh giá |
+|---|---|---|
+| **(a)** Hai thuật toán TS/UCB, chọn item và vị trí, so sánh CTR | Tables 3–4, 12; Figure 1 | Đã triển khai và có so sánh với logger |
+| **(b)** Độ nhạy batch size | Table 5; Figures 2, 7 | Đã thử 500, 5.000, 50.000 dòng log |
+| **(c)** Độ nhạy tham số | Table 6; Figure 3 | Đã thử nhiều giá trị và chọn bằng validation |
+| **(d)** Aggregation/heterogeneity | Table 7; Figure 4 | Đã so sánh item-only, item–position và phân nhóm |
+| **(e)** Fairness người dùng/item và mở rộng | Tables 8–9, 16–17; Figure 5 | Đã đo và triển khai Fair TS; kết luận về người dùng còn hạn chế |
+| **(f)** Kiểm tra tính dừng | Tables 10–11; Figure 6 | Có kiểm định thực nghiệm, không chỉ nhìn biểu đồ |
+| **(g)** Thay đổi khi không dừng | Table 15 và phần giải thích | Có đề xuất, đồng thời triển khai discount để minh họa |
+
+**Có bốn điểm cần giữ rõ trong bản nộp:**
+
+1. **Giả định 79/80 item chưa được xác minh.**  
+   File chứa 79 item nhưng propensity là 1/80. Phép đánh giá chính dùng 1/79 dựa trên giả định lọc theo item từ log uniform. Các phép tính đã khớp, nhưng tính hợp lệ của giả định phụ thuộc cách tạo file.
+
+2. **Hai loại thí nghiệm có ý nghĩa khác nhau.**  
+   So sánh chính trên test dùng policy đã huấn luyện và giữ cố định. Thí nghiệm batch dùng replay thích nghi trên validation. Không nên trình bày chúng như cùng một thí nghiệm online.
+
+3. **Fairness với item được cải thiện; fairness với mọi người dùng chưa được chứng minh.**  
+   Gini exposure giảm từ khoảng **0,870 xuống 0,419**. Tuy nhiên, một số ước lượng DR theo nhóm rất nhiễu, thậm chí âm. Đây không phải xác suất click thật âm và không được dùng để khẳng định chắc chắn mức thiệt hại của nhóm.
+
+4. **Mặc định chương trình lưu hình, chưa tự mở hình.**  
+   Bảng được in ra console; hình được lưu PNG/PDF và in identifier. Để thể hiện rõ yêu cầu bảng/hình khi chạy, dùng:
+   ```powershell
+   python "assignments/Assignment 2/solution/run_assignment.py" --show
+   ```
+
+**Đánh giá của tôi: phần triển khai đã bao phủ đề và các phép tính chính đã qua kiểm tra; bản PDF vẫn cần hoàn thiện trước khi nộp.** Ngoài thay mã sinh viên và xóa “Working draft”, cần giữ đúng các giới hạn trên và diễn giải kết quả bằng lời của bạn. Tôi không thể bảo đảm điểm số chỉ từ việc chương trình chạy thành công.
+
+Bạn có thể đối chiếu trực tiếp với [báo cáo PDF](<D:/Learning-from-Big-Data-main/Learning-from-Big-Data-main/assignments/Assignment 2/solution/Assignment_2_STUDENTNUMBER.pdf>) và [toàn bộ bảng output](<D:/Learning-from-Big-Data-main/Learning-from-Big-Data-main/assignments/Assignment 2/solution/outputs/console.txt>).
+
 Lưu ý **[Assignment_2_Overleaf.zip](<D:/Learning-from-Big-Data-main/Learning-from-Big-Data-main/assignments/Assignment 2/solution/Assignment_2_Overleaf.zip>) chỉ chứa nguồn báo cáo cùng bảng/hình để biên dịch trên Overleaf; nó không thay thế ZIP mã Python.**
 
 Nếu chỉ sửa mã sinh viên và câu chữ, bạn không cần chạy lại toàn bộ thí nghiệm; chỉ cần biên dịch lại PDF. Nếu thay thuật toán, tham số hoặc dữ liệu, cần chạy lại để báo cáo và kết quả khớp nhau.
