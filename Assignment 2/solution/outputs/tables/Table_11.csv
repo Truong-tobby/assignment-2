@@ -1,0 +1,8 @@
+test,statistic,p_value,method,cells,B,q_BH,reject_5pct
+Unadjusted reward by day,27.842123731105595,0.000999000999000999,parametric binomial bootstrap,1,1000,0.000999000999000999,True
+Reward given item and position,2818.672291759815,0.000999000999000999,parametric binomial bootstrap,237,1000,0.000999000999000999,True
+Reward given item position and feature 0,5883.482788812323,0.000999000999000999,parametric binomial bootstrap,948,1000,0.000999000999000999,True
+Context mix by day: user_feature_0,1146.4769898755374,3.257915885691498e-232,chi square (exploratory for sparse cells),28,0,1.1402705599920243e-231,True
+Context mix by day: user_feature_1,965.9232795283694,7.934896083399513e-184,chi square (exploratory for sparse cells),42,0,1.85147575279322e-183,True
+Context mix by day: user_feature_2,990.6364319980507,2.3483922337512712e-172,chi square (exploratory for sparse cells),70,0,4.109686409064725e-172,True
+Context mix by day: user_feature_3,1503.676692013926,4.6734272940430845e-279,chi square (exploratory for sparse cells),70,0,3.271399105830159e-278,True

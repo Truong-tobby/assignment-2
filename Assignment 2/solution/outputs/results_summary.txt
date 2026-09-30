@@ -1,0 +1,37 @@
+The supplied archive contains 1,356,670 slot observations and 79 observed items. The original propensity is 0.0125. Results condition on the retained item universe under the item-only filtering assumption.
+
+Logger: estimated DR CTR 0.361% (95% hourly-block interval [0.329, 0.392]%), ESS 378,533.
+
+Pooled TS: estimated DR CTR 0.677% (95% hourly-block interval [0.541, 0.818]%), ESS 24,799.
+
+Position TS: estimated DR CTR 0.585% (95% hourly-block interval [0.441, 0.739]%), ESS 10,700.
+
+Position UCB: estimated DR CTR 0.488% (95% hourly-block interval [0.303, 0.689]%), ESS 5,622.
+
+Fair TS: estimated DR CTR 0.504% (95% hourly-block interval [0.398, 0.611]%), ESS 37,047.
+
+Pooled TS - Logger: DR difference 0.317 percentage points; 95% interval [0.191, 0.450] percentage points, positive.
+
+Position TS - Logger: DR difference 0.224 percentage points; 95% interval [0.078, 0.383] percentage points, positive.
+
+Position UCB - Logger: DR difference 0.128 percentage points; 95% interval [-0.068, 0.338] percentage points, inconclusive in sign.
+
+Fair TS - Logger: DR difference 0.144 percentage points; 95% interval [0.051, 0.239] percentage points, positive.
+
+Position TS - Position UCB: DR difference 0.097 percentage points; 95% interval [-0.026, 0.207] percentage points, inconclusive in sign.
+
+The fairness extension changes item exposure Gini from 0.870 to 0.419. Worst supported group uplift changes from -107.9% to -77.1%. These are descriptive group point estimates, not a statistical or ethical guarantee of user fairness.
+
+Unadjusted reward by day: adjusted q = 0.000999; rejects the tested stability null at 5%. Non-rejection does not establish stationarity.
+
+Reward given item and position: adjusted q = 0.000999; rejects the tested stability null at 5%. Non-rejection does not establish stationarity.
+
+Reward given item position and feature 0: adjusted q = 0.000999; rejects the tested stability null at 5%. Non-rejection does not establish stationarity.
+
+Context mix by day: user_feature_0: adjusted q = 1.14e-231; rejects the tested stability null at 5%. Non-rejection does not establish stationarity.
+
+Context mix by day: user_feature_1: adjusted q = 1.851e-183; rejects the tested stability null at 5%. Non-rejection does not establish stationarity.
+
+Context mix by day: user_feature_2: adjusted q = 4.11e-172; rejects the tested stability null at 5%. Non-rejection does not establish stationarity.
+
+Context mix by day: user_feature_3: adjusted q = 3.271e-278; rejects the tested stability null at 5%. Non-rejection does not establish stationarity.

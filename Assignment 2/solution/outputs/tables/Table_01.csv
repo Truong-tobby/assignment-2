@@ -1,0 +1,12 @@
+measure,value
+rows,1356670
+items_observed,79
+positions,3
+clicks,4720
+observed_CTR,0.0034791069309412018
+original_pscore,0.0125
+conditional_pscore_assumed,0.012658227848101266
+duplicate_rows_retained,162
+first_timestamp,2019-11-24 00:00:00.007365+00:00
+last_timestamp,2019-11-30 23:59:59.408889+00:00
+sha256_archive,719a72eefb61844452013e63eac3a4a3d847216471468dea5e74682c54e5852a

@@ -1,0 +1,5 @@
+policy,family,structure,feature,strength,c,epsilon
+Pooled TS,TS,pooled,user_feature_0,1000.0,0.01,0.05
+Position TS,TS,position,user_feature_0,1000.0,0.01,0.05
+Position UCB,UCB,position,user_feature_0,100.0,1.0,0.05
+Fair TS,TS,segment,user_feature_1,1000.0,0.01,0.5

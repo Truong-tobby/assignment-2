@@ -1,0 +1,75 @@
+{
+  "quick": false,
+  "seed": 1,
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "draws_per_seed": 256,
+  "bootstrap_repetitions": 2000,
+  "data_path": "D:\\Learning-from-Big-Data-main\\Learning-from-Big-Data-main\\data\\assignment 2\\zozo_Context_80items.zip",
+  "data": {
+    "rows": 1356670,
+    "items_observed": 79,
+    "positions": 3,
+    "clicks": 4720,
+    "observed_CTR": 0.0034791069309412018,
+    "original_pscore": 0.0125,
+    "conditional_pscore_assumed": 0.012658227848101266,
+    "duplicate_rows_retained": 162,
+    "first_timestamp": "2019-11-24 00:00:00.007365+00:00",
+    "last_timestamp": "2019-11-30 23:59:59.408889+00:00",
+    "sha256_archive": "719a72eefb61844452013e63eac3a4a3d847216471468dea5e74682c54e5852a"
+  },
+  "versions": {
+    "python": "3.12.7",
+    "numpy": "2.4.4",
+    "pandas": "3.0.3",
+    "scipy": "1.17.1",
+    "matplotlib": "3.10.9"
+  },
+  "configs": [
+    {
+      "policy": "Pooled TS",
+      "family": "TS",
+      "structure": "pooled",
+      "feature": "user_feature_0",
+      "strength": 1000.0,
+      "c": 0.01,
+      "epsilon": 0.05
+    },
+    {
+      "policy": "Position TS",
+      "family": "TS",
+      "structure": "position",
+      "feature": "user_feature_0",
+      "strength": 1000.0,
+      "c": 0.01,
+      "epsilon": 0.05
+    },
+    {
+      "policy": "Position UCB",
+      "family": "UCB",
+      "structure": "position",
+      "feature": "user_feature_0",
+      "strength": 100.0,
+      "c": 1.0,
+      "epsilon": 0.05
+    },
+    {
+      "policy": "Fair TS",
+      "family": "TS",
+      "structure": "segment",
+      "feature": "user_feature_1",
+      "strength": 1000.0,
+      "c": 0.01,
+      "epsilon": 0.5
+    }
+  ],
+  "fairness_utility_floor_feasible": true,
+  "estimand": "Frozen-policy CTR per slot in retained 79-item universe, final two UTC days",
+  "pscore_assumption": "Item-only filtering from uniform logging; conditional pscore=1/K"
+}

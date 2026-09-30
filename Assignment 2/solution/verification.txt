@@ -1,0 +1,8 @@
+PASS: 10 unit tests.
+PASS: full-data pipeline completed twice.
+PASS: {'tables': 17, 'tex': 14, 'figures': 7} identical byte-for-byte across two full runs.
+PASS: 7 charts visually reviewed.
+SOURCE: outputs/manifest.json records data hash and package versions.
+PASS: final 10-page LaTeX PDF compiled; no LaTeX warnings or out-of-page text blocks.
+PASS: final PDF layout visually reviewed.
+PASS: Overleaf ZIP integrity verified.

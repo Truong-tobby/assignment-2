@@ -1,0 +1,5 @@
+# Versions used for the verified run; Python 3.12.
+numpy==2.4.4
+pandas==3.0.3
+scipy==1.17.1
+matplotlib==3.10.9
