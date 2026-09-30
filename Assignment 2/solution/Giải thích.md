@@ -465,3 +465,98 @@ Bộ lời giải hiện có:
 Tôi đã chạy 10 kiểm tra tính đúng đắn và hai lần chạy toàn bộ dữ liệu. **17 bảng CSV, 14 đoạn LaTeX và 7 hình PNG giống nhau từng byte giữa hai lần chạy.** Bảng được in với identifier; hình được lưu PNG/PDF và có tùy chọn `--show` để mở xem.
 
 Bạn nên đọc **hướng dẫn tiếng Việt song song với báo cáo PDF**, rồi mở hàm tương ứng trong mã cho từng câu. Trước khi nộp, cần thay mã sinh viên, kiểm tra giả định 79/80 item và chỉnh phần diễn giải theo cách hiểu của bạn.
+
+
+
+
+
+**Chưa nên nộp nguyên trạng bản hiện tại.** Mã đã chạy được, kết quả đã kiểm tra và báo cáo đã có đủ các phần (a)–(g), nhưng PDF vẫn ghi **`STUDENTNUMBER`** và **“Working draft”**. Bạn cần hoàn thiện bản nộp cuối.
+
+**Những việc cần sửa trước khi nộp:**
+
+1. **Điền mã sinh viên trong [report.tex](<D:/Learning-from-Big-Data-main/Learning-from-Big-Data-main/assignments/Assignment 2/solution/report.tex:10>).**
+
+   Thay:
+   ```latex
+   \newcommand{\studentnumber}{STUDENTNUMBER}
+   ```
+   bằng mã thật, ví dụ:
+   ```latex
+   \newcommand{\studentnumber}{123456}
+   ```
+
+   Sau đó biên dịch lại thành `Assignment_2_123456.pdf`. **Chỉ đổi tên PDF chưa đủ**, vì mã sinh viên bên trong vẫn chưa thay.
+
+2. **Xóa lời nhắc dành cho bản nháp.**
+
+   Trong `report.tex`, xóa câu:
+   ```latex
+   \textbf{Working draft.} Replace the student number and review the interpretation before submission.
+   ```
+
+   Có thể đổi tiêu đề `Automatically generated findings` thành `Results`. Giữ phần giải thích rằng bảng và hình được sinh từ mã để tái lập.
+
+3. **Đọc và hoàn thiện phần diễn giải bằng cách hiểu của bạn.**
+
+   Đặc biệt, báo cáo nên nói rõ:
+
+   - TS có CTR ước lượng cao hơn UCB, nhưng **chưa đủ bằng chứng thống kê để khẳng định TS tốt hơn UCB**.
+   - Mô hình phân nhóm chi tiết hơn không cải thiện CTR trong thí nghiệm hiện tại.
+   - Fair TS cải thiện độ đồng đều của exposure, nhưng **không bảo đảm mọi nhóm người dùng đều hưởng lợi**.
+   - Batch nhỏ hơn và discount mạnh hơn không phải lúc nào cũng tốt hơn.
+
+   Các bảng đã có số liệu; phần bạn cần chú trọng là giải thích **kết quả đó có nghĩa gì và giới hạn ở đâu**.
+
+4. **Giữ nguyên phần giải thích về 79/80 item.**
+
+   File chỉ có 79 item nhưng propensity là 1/80. Báo cáo hiện đã công khai giả định xử lý. Bạn nên xác minh cách lọc dữ liệu với giảng viên nếu có thể; không nên xóa đoạn này hoặc trình bày giả định như sự thật đã được xác nhận.
+
+5. **Kiểm tra yêu cầu trên Canvas rồi biên dịch PDF cuối.**
+
+   Hai PDF hướng dẫn bạn cung cấp yêu cầu báo cáo LaTeX, tên file đúng, code tái lập và bảng/hình có identifier. Chúng **không nêu rõ định dạng gói code, giới hạn trang hay các yêu cầu khai báo công cụ hỗ trợ**; những điểm đó cần đối chiếu Canvas.
+
+**Về file cần nộp, tôi đề xuất bộ sau.** Tên PDF là yêu cầu rõ trong hướng dẫn; tên ZIP code dưới đây là cách đóng gói đề xuất.
+
+| File | Nội dung |
+|---|---|
+| `Assignment_2_MASINHVIEN.pdf` | Báo cáo cuối sau khi sửa và biên dịch |
+| `Assignment_2_MASINHVIEN_code.zip` | Mã Python, dependencies và hướng dẫn chạy |
+| Nguồn LaTeX | Nộp thêm nếu Canvas/giảng viên yêu cầu |
+
+Trong ZIP code nên có:
+
+```text
+bandits.py
+diagnostics.py
+run_assignment.py
+test_assignment.py
+requirements.txt
+requirements-lock.txt
+README_RUN.txt
+outputs/
+    tables/
+    figures/
+    console.txt
+    manifest.json
+verification.txt
+```
+
+`README_RUN.txt` nên ghi vị trí dữ liệu, phiên bản Python và lệnh chạy, chẳng hạn:
+
+```powershell
+python -m pip install -r requirements.txt
+python run_assignment.py --data "DUONG_DAN/zozo_Context_80items.csv" --show
+```
+
+Khi đóng gói riêng, cần thử chạy từ thư mục đã giải nén để chắc chắn đường dẫn hoạt động. Hiện mã đã được kiểm tra trong cấu trúc repository, **chưa có ZIP code nộp bài được đóng gói và kiểm tra riêng**.
+
+**Không nên nộp cả thư mục `solution` mà chưa lọc file.** Một số file không cần đưa vào bộ nộp:
+
+- `.aux`, `.log` của LaTeX và `report_preview.png`: file phục vụ biên dịch/kiểm tra.
+- `HUONG_DAN.md`, `Giải thích.md`: tài liệu học của bạn, trừ khi muốn bổ sung.
+- `zozo_Context_80items.csv`: file khoảng 269 MB; chỉ kèm nếu giảng viên yêu cầu nộp lại dữ liệu.
+- Các PDF đề bài và hướng dẫn gốc.
+
+Lưu ý **[Assignment_2_Overleaf.zip](<D:/Learning-from-Big-Data-main/Learning-from-Big-Data-main/assignments/Assignment 2/solution/Assignment_2_Overleaf.zip>) chỉ chứa nguồn báo cáo cùng bảng/hình để biên dịch trên Overleaf; nó không thay thế ZIP mã Python.**
+
+Nếu chỉ sửa mã sinh viên và câu chữ, bạn không cần chạy lại toàn bộ thí nghiệm; chỉ cần biên dịch lại PDF. Nếu thay thuật toán, tham số hoặc dữ liệu, cần chạy lại để báo cáo và kết quả khớp nhau.
